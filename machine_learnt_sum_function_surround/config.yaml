@@ -1,0 +1,9 @@
+output:
+  text: Hello World
+
+image: machine_learnt_sum_function_surround
+company: yourcompany
+version: latest
+
+# Details of class inheriting from Wrapper
+wrapper-info: machine_learnt_sum_function_surround.wrapper.PipelineWrapper
