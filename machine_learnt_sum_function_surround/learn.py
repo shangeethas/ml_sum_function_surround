@@ -24,6 +24,12 @@ class LRLearn:
         print('Intercept : ', intercept)
         print('Coefficients : ', coefficients)
 
+        h5f = h5py.File(os.path.abspath('output/linear_reg_model.hdf5'), 'w')
+        h5f.create_dataset('intercept', data=np.array(intercept))
+        h5f.create_dataset('coefficients', data=np.array(coefficients))
+        h5f.close()
+
+        # save the model to models folder - copy/manual action of move
         h5f = h5py.File(os.path.abspath('models/linear_reg_model.hdf5'), 'w')
         h5f.create_dataset('intercept', data=np.array(intercept))
         h5f.create_dataset('coefficients', data=np.array(coefficients))
@@ -39,11 +45,21 @@ class NNLearn:
         model.add(Dense(1, kernel_initializer='uniform',
                         activation='relu', input_shape=self.data_frame.shape))
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+        model.save(os.path.abspath('output/neural_networks_model.hdf5'))
+        model.save_weights(os.path.abspath('output/linear_reg_model.hdf5'))
+
         model.save(os.path.abspath('models/neural_networks_model.hdf5'))
+        model.save_weights(os.path.abspath('output/linear_reg_model.hdf5'))
 
         model_json = model.to_json()
 
+        with open(os.path.abspath('output/linear_reg_model.hdf5'), "w") as json_file:
+            json_file.write(model_json)
+
+        print("Saved NN model to output folder")
+
         with open(os.path.abspath('models/linear_reg_model.hdf5'), "w") as json_file:
             json_file.write(model_json)
-        model.save_weights(os.path.abspath('models/linear_reg_model.hdf5'))
-        print("Saved NN model to disk")
+
+        print("Saved NN model to models folder")
