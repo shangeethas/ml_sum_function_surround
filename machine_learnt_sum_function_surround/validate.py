@@ -10,15 +10,14 @@ class Validate:
 
     def __define_nn_model_architecture__(self):
         model = Sequential()
-        model.add(Dense(1, kernel_initializer='uniform',
-                        activation='relu', input_shape=self.data_frame.shape))
+        model.add(Dense(1, kernel_initializer='uniform', activation='relu', input_shape=(4, )))
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
         return model
 
     def __validate_regression_model__(self):
-        print('Validate Regression Model : ', os.path.abspath('models/linear_reg_model.hdf5'))
-        h5f = h5py.File(os.path.abspath('models/linear_reg_model.hdf5'), 'r')
+        print('Validate Regression Model : ', os.path.abspath('models/linear_reg_model_1.hdf5'))
+        h5f = h5py.File(os.path.abspath('models/linear_reg_model_1.hdf5'), 'r')
         intercept = h5f['intercept'][()]
         coefficients = h5f['coefficients'][()]
         h5f.close()
@@ -40,11 +39,9 @@ class Validate:
         model.load_weights(filepath=os.path.abspath('models/neural_networks_model.hdf5'))
         print("Loaded model weights from disk")
 
-        sum_score = 0.0
+        score, accuracy = model.evaluate((self.__data_frame['a'], self.__data_frame['b'],
+                                          self.__data_frame['c'], self.__data_frame['d']),
+                                         self.__data_frame['y'])
 
-        for i in range(self.__data_frame['a'].count() - 1):
-            score = model.evaluate((self.__data_frame['a'][i], self.__data_frame['b'][i], self.__data_frame['c'][i],
-                                   self.__data_frame['d'][i]), self.__data_frame['y'][i], verbose=0)
-            sum_score += score
-
-        print('Sum Score of Neural Networks Model : ', sum_score)
+        print('Score of Neural Networks Model : ', score)
+        print('Accuracy of Neural Networks Model :', accuracy)

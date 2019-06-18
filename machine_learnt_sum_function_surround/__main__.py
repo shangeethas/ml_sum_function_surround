@@ -1,7 +1,7 @@
 import argparse
 from surround import Assembler
-from stages import Main, ValidateData
-from batch_runner import BatchRunner
+from machine_learnt_sum_function_surround.stages import Main, ValidateData
+from machine_learnt_sum_function_surround.batch_runner import BatchRunner
 
 
 def main():
