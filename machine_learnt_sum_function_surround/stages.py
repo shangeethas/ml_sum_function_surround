@@ -1,5 +1,5 @@
 from surround import Estimator, SurroundData, Validator
-from machine_learnt_sum_function_surround.learn import LRLearn, NNLearn
+from machine_learnt_sum_function_surround.learn import Learn, LRLearn, NNLearn
 from machine_learnt_sum_function_surround.validate import Validate
 
 
@@ -22,9 +22,9 @@ class Main(Estimator):
 
     def fit(self, surround_data, config):
         lr_learner = LRLearn(surround_data.input_data)
-        lr_learner.__learn_linear_regression__()
+        lr_learner.__learn__()
 
         nn_learner = NNLearn(surround_data.input_data)
-        nn_learner.__learn_neural_networks__()
+        nn_learner.__learn__()
 
         surround_data.output_data = surround_data.input_data
