@@ -3,6 +3,7 @@ import h5py
 import yaml as yaml
 import os
 import pandas as pd
+from keras.models import load_model
 from keras.models import Sequential
 from keras.layers import Dense
 from keras import optimizers
@@ -52,14 +53,19 @@ def predict_neural_networks():
 
     print('Predict Neural Networks Model')
 
-    # model = load_model(os.path.abspath('../models/neural_networks_model.h5'))
-    # model.load_weights(os.path.abspath('../models/nn_model_weights.h5'))
-    model = Sequential()
-    model.add(Dense(1, kernel_initializer='uniform', activation='relu', input_dim=4))
-    sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
-    model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
+    model = load_model(os.path.abspath('../models/neural_networks_model.h5'))
+    model.load_weights(os.path.abspath('../models/nn_model_weights.h5'))
+    # model = Sequential()
+    # model.add(Dense(1, kernel_initializer='uniform', activation='relu', input_dim=4))
+    # sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
+    # model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
+    print('here!', x.shape)
 
-    score, accuracy = model.evaluate(x, y)
+    # score, accuracy = model.evaluate(x, y)
+    foo = model.predict(x)
+    print(foo)
+    quit()
+    # review the concept of model.predict
 
     print('Predict Neural Networks Model Score', score)
     print('Predict Neural Networks Model Accuracy', accuracy)
