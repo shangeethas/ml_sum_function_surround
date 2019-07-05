@@ -32,7 +32,7 @@ def predict_linear_regression():
     print('Actual Sum Function of {} and {} and {} and {} is : {}'.format(a, b, c, d, y_actual))
 
     y_model = coefficients[0] * a + coefficients[1] * b + coefficients[2] * c + coefficients[3] * d + intercept
-    print('Machine Learnt Sum Function of {} and {} and {} and {} is : {}'.format(a, b, c, d, y_model))
+    print('LR Sum Function of {} and {} and {} and {} is : {}'.format(a, b, c, d, y_model))
 
 
 def predict_neural_networks():
@@ -48,27 +48,11 @@ def predict_neural_networks():
     c = configs.get('c')
     d = configs.get('d')
     x = pd.DataFrame({'a': [a], 'b': [b], 'c': [c], 'd': [d]})
-    print('Predict X array : ', x)
-    y = a + b + c + d
-
-    print('Predict Neural Networks Model')
 
     model = load_model(os.path.abspath('../models/neural_networks_model.h5'))
     model.load_weights(os.path.abspath('../models/nn_model_weights.h5'))
-    # model = Sequential()
-    # model.add(Dense(1, kernel_initializer='uniform', activation='relu', input_dim=4))
-    # sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
-    # model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
-    print('here!', x.shape)
-
-    # score, accuracy = model.evaluate(x, y)
-    foo = model.predict(x)
-    print(foo)
-    quit()
-    # review the concept of model.predict
-
-    print('Predict Neural Networks Model Score', score)
-    print('Predict Neural Networks Model Accuracy', accuracy)
+    y_model = model.predict(x)
+    print('NN Sum Function of {} and {} and {} and {} is : {}'.format(a, b, c, d, y_model))
 
 
 if __name__ == "__main__":
