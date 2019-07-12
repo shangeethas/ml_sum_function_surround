@@ -4,9 +4,6 @@ import yaml as yaml
 import os
 import pandas as pd
 from keras.models import load_model
-from keras.models import Sequential
-from keras.layers import Dense
-from keras import optimizers
 
 
 def predict_linear_regression():
