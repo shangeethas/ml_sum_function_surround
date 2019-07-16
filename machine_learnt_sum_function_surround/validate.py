@@ -9,10 +9,16 @@ class Validate:
     def __init__(self, data_frame=[]):
         self.__data_frame = data_frame
 
-    def __define_nn_model_architecture__(self):
-        print('Validate Neural Networks Model')
-        model = load_model(os.path.abspath('models/neural_networks_model.h5'))
-        model.load_weights(os.path.abspath('models/nn_model_weights.h5'))
+    def __load_nn_model_architecture_1__(self):
+        print('Validate Neural Networks Model 1')
+        model = load_model(os.path.abspath('models/neural_networks_model_1.h5'))
+        model.load_weights(os.path.abspath('models/nn_model_weights_1.h5'))
+        return model
+
+    def __load_nn_model_architecture_2__(self):
+        print('Validate Neural Networks Model 2')
+        model = load_model(os.path.abspath('models/neural_networks_model_2.h5'))
+        model.load_weights(os.path.abspath('models/nn_model_weights_2.h5'))
         return model
 
     def __validate_regression_model__(self):
@@ -41,9 +47,16 @@ class Validate:
         _x_ = pd.DataFrame(data=d)
         _y_ = self.__data_frame['y']
 
-        model = self.__define_nn_model_architecture__()
+        model1 = self.__load_nn_model_architecture_1__()
 
-        score, accuracy = model.evaluate(_x_, _y_)
+        score, accuracy = model1.evaluate(_x_, _y_)
 
-        print('Score of Neural Networks Model : ', score)
-        print('Accuracy of Neural Networks Model :', accuracy)
+        print('Score of Neural Networks Model 1 : ', score)
+        print('Accuracy of Neural Networks Model 1 :', accuracy)
+
+        model2 = self.__load_nn_model_architecture_2__()
+
+        score, accuracy = model2.evaluate(_x_, _y_)
+
+        print('Score of Neural Networks Model 2 : ', score)
+        print('Accuracy of Neural Networks Model 2 :', accuracy)

@@ -60,18 +60,33 @@ class NNLearn(Learn):
         self.__y__ = self.__data_frame['y']
 
     def __learn__(self):
-        model = Sequential()
-        model.add(Dense(1, kernel_initializer='uniform', activation='relu', input_dim=4))
-        sgd = optimizers.SGD(lr=0.01, clipnorm=1.)
-        model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
-        model.fit(self.__x__, self.__y__, epochs=12)
+        model1 = Sequential()
+        model1.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
+        sgd1 = optimizers.SGD(lr=0.01, clipnorm=1.)
+        model1.compile(loss='mean_squared_error', optimizer=sgd1, metrics=['accuracy'])
+        model1.fit(self.__x__, self.__y__, epochs=12)
 
-        model.save(filepath=os.path.abspath('output/neural_networks_model.h5'))
-        model.save_weights(os.path.abspath('output/nn_model_weights.h5'))
+        model1.save(filepath=os.path.abspath('output/neural_networks_model_1.h5'))
+        model1.save_weights(os.path.abspath('output/nn_model_weights_1.h5'))
 
-        model.save(filepath=os.path.abspath('models/neural_networks_model.h5'))
-        model.save_weights(os.path.abspath('models/nn_model_weights.h5'))
+        model1.save(filepath=os.path.abspath('models/neural_networks_model_1.h5'))
+        model1.save_weights(os.path.abspath('models/nn_model_weights_1.h5'))
 
-        del model
+        del model1
+
+        model2 = Sequential()
+        model2.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
+        sgd2 = optimizers.SGD(lr=0.001, clipnorm=1.)
+        model2.compile(loss='mean_squared_error', optimizer=sgd2, metrics=['accuracy'])
+        model2.fit(self.__x__, self.__y__, epochs=12)
+
+        model2.save(filepath=os.path.abspath('output/neural_networks_model_2.h5'))
+        model2.save_weights(os.path.abspath('output/nn_model_weights_2.h5'))
+
+        model2.save(filepath=os.path.abspath('models/neural_networks_model_2.h5'))
+        model2.save_weights(os.path.abspath('models/nn_model_weights_2.h5'))
+
+        del model2
+
 
         print("Saved NN model to models folder")
