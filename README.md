@@ -6,8 +6,7 @@ Sum function is considered to unveil the errors and the anomalies, as sum is the
 * Sum function is considered for four inputs and for one output.
 * Two learning models, Linear Regression and Neural Networks are designed to learn the sum function.
 
-
-![alt text](common/logo.png)
+![alt text](common/logo.png "Logo")
 
 ## Installation
 
@@ -56,7 +55,12 @@ Following is the surround inbuilt command for training model based on training d
 sci-kit learn python library is used to learn sum function and to find four regression coefficients and intercept.
 
 #### Neural Networks model
-Keras python library is used to construct NN model and to find weights and bias. 
+Keras python library is used to construct NN model and to find weights and bias.
+
+|Architecture Number |Model     |No of Layers  |No of Input Neurons|No of Output Neurons|
+|:-----------------:|:-----:    |:-----------: |:-----------------:|:------------------:|  
+|1                   |Sequential| 1            | 1                 |   1                |
+ 
 
 After completion of learning, both models are saved in h5 format.
 
