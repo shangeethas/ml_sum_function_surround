@@ -6,8 +6,8 @@ Sum function is considered to unveil the errors and the anomalies, as sum is the
 * Sum function is considered for four inputs and for one output.
 * Two learning models, Linear Regression and Neural Networks are designed to learn the sum function.
 
-![alt text]  (https://github.com/shangeethas/ml_sum_function_surround/ml_sum_function_surround/common/logo.png "Logo Text 1")
 
+![alt text](common/logo.png)
 
 ## Installation
 
@@ -50,7 +50,16 @@ From the generated data set, three partitions are created such as training (60%)
 Further, correlation matrices are calculated for each partition.
 
 ### Learning Phase
+Following is the surround inbuilt command for training model based on training data set.
 `python3 -m machine_learned_sum_function --mode train`
+#### Linear Regression model 
+sci-kit learn python library is used to learn sum function and to find four regression coefficients and intercept.
+
+#### Neural Networks model
+Keras python library is used to construct NN model and to find weights and bias. 
+
+After completion of learning, both models are saved in h5 format.
 
 ### Validation Phase
+Following is the surround inbuilt command for validating model based on validation data set.
 `python3 -m machine_learned_sum_function --mode batch`
