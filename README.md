@@ -5,7 +5,7 @@ Sum function is considered to unveil the errors and the anomalies, as sum is the
 
 * Two learning models, Linear Regression and Neural Networks were designed to learn the sum function.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png)
+![alt text]  (https://github.com/shangeethas/ml_sum_function_surround/ml_sum_function_surround/common/logo.png "Logo Text 1")
 
 
 ## Installation
