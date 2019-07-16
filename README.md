@@ -46,28 +46,41 @@ min_range: 1
 max_range: 100
 ```
 From the generated data set, three partitions are created such as training (60%), testing (20%) and validation (20%) and are saved as "numbers_train.csv", "numbers_test.csv" and "numbers_validate.csv" respectively.
-Further, correlation matrices are calculated for each partition.
+Further, correlation matrices are calculated for each partition. 
 
 ### Learning Phase
-Following is the surround inbuilt command for training model based on training data set.
+In general, hyper parameters for models are specified using following three strategies.
+* initialisation with values offered by ML frameworks
+* manual configurations based on recommendations from literature or experience
+* trial and error
+
+Following surround inbuilt command is used for training model based on training data set. 
 ```
 python3 -m machine_learned_sum_function --mode train
 ```
 #### Linear Regression model 
 sci-kit learn python library is used to learn sum function and to find four regression coefficients and intercept.
 
+|Hyper parameter                |Parameter value         | 
+|:-----------------------------:|:---------------------: |
+|intercept                      | -3.979039320256561e-13 |
+|coefficient of a               |   1.                   |
+|coefficient of b               |   1.                   |
+|coefficient of c               |   1.                   |
+|coefficient of d               |   1.                   |
+
 #### Neural Networks model
 Keras python library is used to construct NN model and to find weights and bias.
 
-|Architecture Number |Model     |No of Layers  |Layer Description           |No of Units|Kernel Initializer|Activation|Optimizer|Learning Rate|Loss Function        |Metrics|
-|:-----------------:|:-----:    |:-----------: |:-----------------:         |:---------:|:----------------:|:--------:|:-------:|:-----------:|:-----------:        |:-----:| 
-|1                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.01        |Mean Squared Error   |Accuracy|
- 
+|Architecture Number |Model     |No of Layers  |Layer Description           |No of Units|Kernel Initializer|Activation|Optimizer|Learning Rate|
+|:-----------------:|:-----:    |:-----------: |:-----------------:         |:---------:|:----------------:|:--------:|:-------:|:-----------:| 
+|1                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.01        |
+|2                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.001       |
 
 After completion of learning, both models are saved in h5 format.
 
 ### Validation Phase
-Following is the surround inbuilt command for validating model based on validation data set.
+Following surround inbuilt command is used for validating model based on validation data set.
 ```
 python3 -m machine_learned_sum_function --mode batch
 ```
