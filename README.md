@@ -3,7 +3,7 @@
 Machine Learning (ML) increasingly governs our modern society and it is vital that errors are defined and anomalies are detected for any given scenario. 
 Sum function is considered to unveil the errors and the anomalies, as sum is the elemental function from a mathematician's perspective.
 
-* Sum function is considered for four inputs and for one output.
+* Sum function of four inputs is taken into consideration.
 * Two learning models, Linear Regression and Neural Networks are designed to learn the sum function.
 
 ![alt text](common/logo.png "Logo")
@@ -77,7 +77,8 @@ Keras python library is used to construct NN model and to find weights and bias.
 |1                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.01        |
 |2                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.001       |
 
-After completion of learning, both models are saved in h5 format.
+After completion of learning, both models are saved in h5 format. An epoch is a single pass through the entire training set, during iterative training of a neural network, followed by testing of the verification set.
+
 
 ### Validation Phase
 Following surround inbuilt command is used for validating model based on validation data set.

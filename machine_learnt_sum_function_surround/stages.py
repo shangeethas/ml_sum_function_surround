@@ -17,14 +17,14 @@ class ValidateData(Validator):
 class Main(Estimator):
     def estimate(self, surround_data, config):
         validator = Validate(surround_data.input_data)
-        validator.__validate_regression_model__()
-        validator.__validate_neural_networks_model__()
+        validator.validate_regression_model()
+        validator.validate_neural_networks_model()
 
     def fit(self, surround_data, config):
         lr_learner = LRLearn(surround_data.input_data)
-        lr_learner.__learn__()
+        lr_learner.learn()
 
         nn_learner = NNLearn(surround_data.input_data)
-        nn_learner.__learn__()
+        nn_learner.learn()
 
         surround_data.output_data = surround_data.input_data

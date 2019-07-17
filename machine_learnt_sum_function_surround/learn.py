@@ -16,7 +16,7 @@ class Learn:
         __x__ = pd.DataFrame(data=d)
         __y__ = self.__data_frame['y']
 
-    def __learn__(self):
+    def learn(self):
         print('Learn is pure virtual function')
 
 
@@ -29,7 +29,7 @@ class LRLearn(Learn):
         self.__x__ = pd.DataFrame(data=d)
         self.__y__ = self.__data_frame['y']
 
-    def __learn__(self):
+    def learn(self):
         reg = linear_model.LinearRegression()
         reg.fit(self.__x__, self.__y__)
         intercept = reg.intercept_
@@ -59,7 +59,7 @@ class NNLearn(Learn):
         self.__x__ = pd.DataFrame(data=d)
         self.__y__ = self.__data_frame['y']
 
-    def __learn__(self):
+    def learn(self):
         model1 = Sequential()
         model1.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
         sgd1 = optimizers.SGD(lr=0.01, clipnorm=1.)
@@ -78,7 +78,7 @@ class NNLearn(Learn):
         model2.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
         sgd2 = optimizers.SGD(lr=0.001, clipnorm=1.)
         model2.compile(loss='mean_squared_error', optimizer=sgd2, metrics=['accuracy'])
-        model2.fit(self.__x__, self.__y__, epochs=12)
+        model2.fit(self.__x__, self.__y__, epochs=4)
 
         model2.save(filepath=os.path.abspath('output/neural_networks_model_2.h5'))
         model2.save_weights(os.path.abspath('output/nn_model_weights_2.h5'))

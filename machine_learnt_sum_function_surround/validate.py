@@ -9,19 +9,19 @@ class Validate:
     def __init__(self, data_frame=[]):
         self.__data_frame = data_frame
 
-    def __load_nn_model_architecture_1__(self):
+    def load_nn_model_architecture_1(self):
         print('Validate Neural Networks Model 1')
         model = load_model(os.path.abspath('models/neural_networks_model_1.h5'))
         model.load_weights(os.path.abspath('models/nn_model_weights_1.h5'))
         return model
 
-    def __load_nn_model_architecture_2__(self):
+    def load_nn_model_architecture_2(self):
         print('Validate Neural Networks Model 2')
         model = load_model(os.path.abspath('models/neural_networks_model_2.h5'))
         model.load_weights(os.path.abspath('models/nn_model_weights_2.h5'))
         return model
 
-    def __validate_regression_model__(self):
+    def validate_regression_model(self):
         print('Validate Regression Model')
         h5f = h5py.File(os.path.abspath('models/linear_reg_model.hdf5'), 'r')
         intercept = h5f['intercept'][()]
@@ -40,21 +40,21 @@ class Validate:
 
         print('Mean Sum Error of Linear Regression Model : ', sum_error / self.__data_frame['a'].count())
 
-    def __validate_neural_networks_model__(self):
+    def validate_neural_networks_model(self):
 
         d = {'a': self.__data_frame['a'], 'b': self.__data_frame['b'], 'c': self.__data_frame['c'],
              'd': self.__data_frame['d']}
         _x_ = pd.DataFrame(data=d)
         _y_ = self.__data_frame['y']
 
-        model1 = self.__load_nn_model_architecture_1__()
+        model1 = self.load_nn_model_architecture_1()
 
         score, accuracy = model1.evaluate(_x_, _y_)
 
         print('Score of Neural Networks Model 1 : ', score)
         print('Accuracy of Neural Networks Model 1 :', accuracy)
 
-        model2 = self.__load_nn_model_architecture_2__()
+        model2 = self.load_nn_model_architecture_2()
 
         score, accuracy = model2.evaluate(_x_, _y_)
 
