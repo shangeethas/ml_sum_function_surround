@@ -46,10 +46,11 @@ def predict_neural_networks():
     d = configs.get('d')
     x = pd.DataFrame({'a': [a], 'b': [b], 'c': [c], 'd': [d]})
 
-    model = load_model(os.path.abspath('../models/neural_networks_model.h5'))
-    model.load_weights(os.path.abspath('../models/nn_model_weights.h5'))
-    y_model = model.predict(x)
-    print('NN Sum Function of {} and {} and {} and {} is : {}'.format(a, b, c, d, y_model))
+    for i in range(1, 4):
+        model = load_model(os.path.abspath('../models/neural_networks_model_' + str(i) + '.h5'))
+        model.load_weights(os.path.abspath('../models/nn_model_weights_' + str(i) + '.h5'))
+        y_model = model.predict(x)
+        print('NN model Number {} Prediction  of {} and {} and {} and {} is : {}'.format(i, a, b, c, d, y_model))
 
 
 if __name__ == "__main__":

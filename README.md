@@ -71,13 +71,22 @@ sci-kit learn python library is used to learn sum function and to find four regr
 
 #### Neural Networks model
 Keras python library is used to construct NN model and to find weights and bias.
+Following defined optimizers are used.
+|Optimizer Number | Optimizer Type |  Learning Rate |Clipping Normal Maximum Value|
+|:---------------:|:--------------:|:--------------:|:---------------------------:|
+|1                | SGD            |0.01            |1.                           |
+|2                | SGD            |0.001           |1.                           |
 
-|Architecture Number |Model     |No of Layers  |Layer Description           |No of Units|Kernel Initializer|Activation|Optimizer|Learning Rate|
-|:-----------------:|:-----:    |:-----------: |:-----------------:         |:---------:|:----------------:|:--------:|:-------:|:-----------:| 
-|1                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.01        |
-|2                   |Sequential| 1            |Regular densely-connected   |    1      |uniform           |  relu    | SGD     | 0.001       |
+Following defined NN architectures are used.
+|Architecture Number |Model     |No of Layers  |Layer Description           |Kernel Initializer|Activation|Optimizer Number |
+|:-----------------: |:-----:   |:-----------: |:-----------------:         |:----------------:|:--------:|:---------------:|
+|1                   |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 1               | 
+|2                   |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 2               |
+|3                   |Sequential| 1            |Regular densely-connected   |random uniform    |  relu    | 1               |
+
 
 After completion of learning, both models are saved in h5 format. An epoch is a single pass through the entire training set, during iterative training of a neural network, followed by testing of the verification set.
+Model 1 and Model 3 are trained using 12 epochs whereas Model 2 is trained only with 4 epochs, due its lower learning rate.
 
 
 ### Validation Phase

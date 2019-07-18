@@ -60,9 +60,11 @@ class NNLearn(Learn):
         self.__y__ = self.__data_frame['y']
 
     def learn(self):
+        sgd1 = optimizers.SGD(lr=0.01, clipnorm=1.)
+        sgd2 = optimizers.SGD(lr=0.001, clipnorm=1.)
+
         model1 = Sequential()
         model1.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
-        sgd1 = optimizers.SGD(lr=0.01, clipnorm=1.)
         model1.compile(loss='mean_squared_error', optimizer=sgd1, metrics=['accuracy'])
         model1.fit(self.__x__, self.__y__, epochs=12)
 
@@ -76,7 +78,7 @@ class NNLearn(Learn):
 
         model2 = Sequential()
         model2.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
-        sgd2 = optimizers.SGD(lr=0.001, clipnorm=1.)
+        
         model2.compile(loss='mean_squared_error', optimizer=sgd2, metrics=['accuracy'])
         model2.fit(self.__x__, self.__y__, epochs=4)
 
@@ -88,5 +90,17 @@ class NNLearn(Learn):
 
         del model2
 
+        model3 = Sequential()
+        model3.add(Dense(units=1, kernel_initializer='random_uniform', bias_initializer='zeros', activation='relu', input_dim=4))
+        model3.compile(loss='mean_squared_error', optimizer=sgd1, metrics=['accuracy'])
+        model3.fit(self.__x__, self.__y__, epochs=12)
+
+        model3.save(filepath=os.path.abspath('output/neural_networks_model_3.h5'))
+        model3.save_weights(os.path.abspath('output/nn_model_weights_3.h5'))
+
+        model3.save(filepath=os.path.abspath('models/neural_networks_model_3.h5'))
+        model3.save_weights(os.path.abspath('models/nn_model_weights_3.h5'))
+
+        del model3
 
         print("Saved NN model to models folder")
