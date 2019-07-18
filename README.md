@@ -58,7 +58,7 @@ Following surround inbuilt command is used for training model based on training 
 ```
 python3 -m machine_learned_sum_function --mode train
 ```
-#### Linear Regression model 
+#### Linear Regression (LR) model 
 sci-kit learn python library is used to learn sum function and to find four regression coefficients and intercept.
 
 |Hyper parameter                |Parameter value         | 
@@ -69,22 +69,22 @@ sci-kit learn python library is used to learn sum function and to find four regr
 |coefficient of c               |   1.                   |
 |coefficient of d               |   1.                   |
 
-#### Neural Networks model
+#### Neural Networks (NN) model
 Keras python library is used to construct NN model and to find weights and bias.
-Following defined optimizers are used.
+Following defined optimizers are used. SGD stands for Stochastic Gradient Descent.
 
 |Optimizer Number | Optimizer Type |  Learning Rate |Clipping Normal Maximum Value|
 |:---------------:|:--------------:|:--------------:|:---------------------------:|
 |1                | SGD            |0.01            |1.                           |
 |2                | SGD            |0.001           |1.                           |
 
-Following defined NN architectures are used.
+Following defined NN models are used.
 
-|Architecture Number |Model     |No of Layers  |Layer Description           |Kernel Initializer|Activation|Optimizer Number |
-|:-----------------: |:-----:   |:-----------: |:-----------------:         |:----------------:|:--------:|:---------------:|
-|1                   |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 1               | 
-|2                   |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 2               |
-|3                   |Sequential| 1            |Regular densely-connected   |random uniform    |  relu    | 1               |
+|Model Number |Model     |No of Layers  |Layer Description           |Kernel Initializer|Activation|Optimizer Number |
+|:----------: |:-----:   |:-----------: |:-----------------:         |:----------------:|:--------:|:---------------:|
+|1            |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 1               | 
+|2            |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 2               |
+|3            |Sequential| 1            |Regular densely-connected   |random uniform    |  relu    | 1               |
 
 
 After completion of learning, both models are saved in h5 format. An epoch is a single pass through the entire training set, during iterative training of a neural network, followed by testing of the verification set.
@@ -96,5 +96,65 @@ Following surround inbuilt command is used for validating model based on validat
 ```
 python3 -m machine_learned_sum_function --mode batch
 ```
+The entire validation for all designed models took approximately 15 seconds. Following illustrates the validation metrics of different learned models.
+
+|Model Number | Learning Strategy| Validation Metric          | Metric Value        |
+|:-----------:|:----------------:|:-----------------:         |:-------------------:|
+|1            | LR               | Mean sum of squared errors |6.334752934145276e-26|
+|2            | NN               | score                      |0.2695742835038848   |
+|2            | NN               | accuracy                   |0.5101575507858168   |
+|3            | NN               | score                      |0.0018413071703050267|
+|3            | NN               | accuracy                   |1.0                  |
+|4            | NN               | score                      |0.3752033055084647   |
+|4            | NN               | accuracy                   |0.31039655198171684  |
 
 ### Prediction Phase
+As Surround library does not have prediction as one of its stages, a separate utility script was written to predict the sum of four unsigned floats, under four broader spaces, within trained ranges, beyond trained ranges, at border values and for all zeros.
+
+LR Model outcomes as follows
+
+|Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
+|:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
+|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+
+NN Model 1 outcomes as follows
+
+|Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
+|:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
+|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+
+NN Model 2 outcomes as follows
+
+|Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
+|:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
+|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+
+NN Model 3 outcomes as follows
+
+|Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
+|:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
+|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
