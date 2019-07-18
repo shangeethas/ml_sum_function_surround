@@ -1,16 +1,13 @@
 # Machine Learned Sum Function
 
 Machine Learning (ML) increasingly governs our modern society and it is vital that errors are defined and anomalies are detected for any given scenario. 
-Sum function is considered to unveil the errors and the anomalies, as sum is the elemental function from a mathematician's perspective.
-
-* Sum function of four inputs is taken into consideration.
-* Two learning models, Linear Regression and Neural Networks are designed to learn the sum function.
+The sum function is considered to unveil the errors and the anomalies, as sum is the elemental function from a mathematician's perspective.
+In simple terms, the sum of an addend 5 with another addend 7 is 12. In this exercise, the sum function of four inputs is taken into consideration.
+Two learning strategies, Linear Regression (LR) and Neural Networks(NN) are designed to learn the sum function.
 
 ![alt text](common/logo.png "Logo")
 
-## Installation
-
-### Prerequisites
+## Prerequisites
 * Python 3+ (Implemented on 3.7.3)
 * surround 0.0.9
 * numpy 1.16.3
@@ -21,11 +18,12 @@ Sum function is considered to unveil the errors and the anomalies, as sum is the
 * tensorflow 1.13.1
 
 ## Experiments and Results
-The entire experiment was carried out on MacOS with 2.3 GHz Intel Core i5 processor and 8GB memory.
+The entire experiment was carried out on MacOS with 2.3 GHz Intel Core i5 processor and 8GB memory. 
+Four addends are referred as a, b, c and d and output is referred to as y. This exercise consists of four phases such as data generation phase, learning phase, validation phase and prediction phase.
 
 ### Data Generation Phase
-Four inputs are referred as a, b, c and d and output is referred to as y.
-gendata.py generates data points required for sum function. Configurations need to be explicitly specified in configs_data.yaml file.
+
+A python utility script generates data points required for sum function. Configurations need to be explicitly specified in configurations file of yaml format.
 #### Structure of configs_data.yaml
 * random seed of input a
 * random seed of input b
@@ -58,7 +56,7 @@ Following surround inbuilt command is used for training model based on training 
 ```
 python3 -m machine_learned_sum_function --mode train
 ```
-#### Linear Regression (LR) model 
+#### LR model 
 sci-kit learn python library is used to learn sum function and to find four regression coefficients and intercept.
 
 |Hyper parameter                |Parameter value         | 
@@ -115,22 +113,22 @@ LR Model outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
-|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
-|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
-|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
-|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |  119.99999999999973     |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |   71.19999999999968     |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             | -1001.3000000000015     |
+|100.19   |200.28    |300.37    |400.46    |1001.30               |  1001.3000000000006     |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |  3.99999999999961       |
+|100.00   |100.00    |100.00    |100.00    |400.00                |   3.9909189             |
+|0.00     |0.00      |0.00      |0.00      |0.00                  | -3.979039320256561e-13  |
 
 NN Model 1 outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
 |12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.30               |                         |
 |1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
 |100.00   |100.00    |100.00    |100.00    |400.00                |                         |
 |0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
@@ -140,9 +138,9 @@ NN Model 2 outcomes as follows
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
 |12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |                         |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |                         |
+|100.19   |200.28    |300.37    |400.46    |1001.30               |                         |
 |1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
 |100.00   |100.00    |100.00    |100.00    |400.00                |                         |
 |0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
