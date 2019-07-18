@@ -72,12 +72,14 @@ sci-kit learn python library is used to learn sum function and to find four regr
 #### Neural Networks model
 Keras python library is used to construct NN model and to find weights and bias.
 Following defined optimizers are used.
+
 |Optimizer Number | Optimizer Type |  Learning Rate |Clipping Normal Maximum Value|
 |:---------------:|:--------------:|:--------------:|:---------------------------:|
 |1                | SGD            |0.01            |1.                           |
 |2                | SGD            |0.001           |1.                           |
 
 Following defined NN architectures are used.
+
 |Architecture Number |Model     |No of Layers  |Layer Description           |Kernel Initializer|Activation|Optimizer Number |
 |:-----------------: |:-----:   |:-----------: |:-----------------:         |:----------------:|:--------:|:---------------:|
 |1                   |Sequential| 1            |Regular densely-connected   |uniform           |  relu    | 1               | 
