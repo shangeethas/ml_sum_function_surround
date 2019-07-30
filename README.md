@@ -67,7 +67,7 @@ sci-kit learn python library is used to learn sum function and to find four regr
 |coefficient of c               |   1.                   |
 |coefficient of d               |   1.                   |
 
-#### Neural Networks (NN) model
+#### NN model
 Keras python library is used to construct NN model and to find weights and bias.
 Following defined optimizers are used. SGD stands for Stochastic Gradient Descent.
 
@@ -109,7 +109,20 @@ The entire validation for all designed models took approximately 15 seconds. Fol
 ### Prediction Phase
 As Surround library does not have prediction as one of its stages, a separate utility script was written to predict the sum of four unsigned floats, under four broader spaces, within trained ranges, beyond trained ranges, at border values and for all zeros.
 
-LR Model outcomes as follows
+Prediction outcomes within trained ranges
+
+|             |       |         |
+|:-----------:|:-----:|:-------:|
+|Addend a     | 12.00 |7.12     |
+|Addend b     | 24.00 |
+|Addend c     | 36.00 |
+|Addend d     | 48.00 |
+|Ground truth | 120.00 |
+|LR Model     |119.99999999999973|
+|NN Model 1   |  120.27992       |
+|NN Model 2   |  120.03251       |
+|NN Model 3   |  120.2924        |
+
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
@@ -125,34 +138,34 @@ NN Model 1 outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
-|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.30               |                         |
-|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
-|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
-|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |     119.65047           |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |      70.99509           |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |          0.             |
+|100.19   |200.28    |300.37    |400.46    |1001.30               |     998.33875           |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |    3.9951391            |
+|100.00   |100.00    |100.00    |100.00    |400.00                |    398.9104             |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |   0.00609638            |
 
 NN Model 2 outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
-|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.30               |                         |
-|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
-|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
-|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |        119.97312        |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.20                |    71.186745            |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.30             |        0.               |
+|100.19   |200.28    |300.37    |400.46    |1001.30               |    1001.0271            |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |    4.0055857            |
+|100.00   |100.00    |100.00    |100.00    |400.00                |     399.90277           |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |     0.00662439          |
 
 NN Model 3 outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
-|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |                         |
-|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |                         |
-|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |                         |
-|100.19   |200.28    |300.37    |400.46    |1001.3                |                         |
-|1.00     |1.00      |1.00      |1.00      |4.00                  |                         |
-|100.00   |100.00    |100.00    |100.00    |400.00                |                         |
-|0.00     |0.00      |0.00      |0.00      |0.00                  |                         |
+|12.00    | 24.00    | 36.00    | 48.00    | 120.00               |    119.69286            |
+|7.12     | 14.24    | 21.36    | 28.48    | 71.2                 |    71.02048             |
+|-100.19  | -200.28  | -300.37  | -400.46  | -1001.3              |     0.                  |
+|100.19   |200.28    |300.37    |400.46    |1001.3                |    998.6883             |
+|1.00     |1.00      |1.00      |1.00      |4.00                  |    3.9963598            |
+|100.00   |100.00    |100.00    |100.00    |400.00                |    398.97647            |
+|0.00     |0.00      |0.00      |0.00      |0.00                  |   0.00666155            |
