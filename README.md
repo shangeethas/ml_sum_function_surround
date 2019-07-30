@@ -109,20 +109,7 @@ The entire validation for all designed models took approximately 15 seconds. Fol
 ### Prediction Phase
 As Surround library does not have prediction as one of its stages, a separate utility script was written to predict the sum of four unsigned floats, under four broader spaces, within trained ranges, beyond trained ranges, at border values and for all zeros.
 
-Prediction outcomes within trained ranges
-
-|             |       |         |
-|:-----------:|:-----:|:-------:|
-|Addend a     | 12.00 |7.12     |
-|Addend b     | 24.00 |
-|Addend c     | 36.00 |
-|Addend d     | 48.00 |
-|Ground truth | 120.00 |
-|LR Model     |119.99999999999973|
-|NN Model 1   |  120.27992       |
-|NN Model 2   |  120.03251       |
-|NN Model 3   |  120.2924        |
-
+LR Model outcomes as follows
 
 |Addend a | Addend b | Addend c | Addend d | Ground truth outcome | Predicted model outcome |
 |:-------:|:--------:|:--------:|:--------:|:--------------------:|:-----------------------:|
