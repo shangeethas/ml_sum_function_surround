@@ -66,7 +66,7 @@ class NNLearn(Learn):
         model1 = Sequential()
         model1.add(Dense(units=1, kernel_initializer='uniform', activation='relu', input_dim=4))
         model1.compile(loss='mean_squared_error', optimizer=sgd1, metrics=['accuracy'])
-        model1.fit(self.__x__, self.__y__, epochs=12)
+        model1.fit(self.__x__, self.__y__, epochs=4)
 
         model1.save(filepath=os.path.abspath('output/neural_networks_model_1.h5'))
         model1.save_weights(os.path.abspath('output/nn_model_weights_1.h5'))
@@ -93,7 +93,7 @@ class NNLearn(Learn):
         model3 = Sequential()
         model3.add(Dense(units=1, kernel_initializer='random_uniform', bias_initializer='zeros', activation='relu', input_dim=4))
         model3.compile(loss='mean_squared_error', optimizer=sgd1, metrics=['accuracy'])
-        model3.fit(self.__x__, self.__y__, epochs=12)
+        model3.fit(self.__x__, self.__y__, epochs=4)
 
         model3.save(filepath=os.path.abspath('output/neural_networks_model_3.h5'))
         model3.save_weights(os.path.abspath('output/nn_model_weights_3.h5'))
