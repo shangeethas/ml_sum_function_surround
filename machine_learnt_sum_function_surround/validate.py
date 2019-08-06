@@ -4,11 +4,11 @@ from keras.models import load_model
 import pandas as pd
 
 
-
 class Validate:
     def __init__(self, data_frame=[]):
         self.__data_frame = data_frame
 
+    @staticmethod
     def load_nn_model(self, model_number=1):
         print('Validate Neural Networks Model []', model_number)
         model = load_model(os.path.abspath('models/neural_networks_model_' + str(model_number) + '.h5'))
